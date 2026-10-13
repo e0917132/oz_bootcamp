@@ -342,8 +342,8 @@ p {
     
     > ⚠️ **인라인 요소에는 적용 안 됨**: `<span>`, `<a>` 같은 인라인 요소는 `width`, `height`를 줘도 무시된다. `display: inline-block`이나 `block`으로 바꿔야 적용됨.
     > 
-    
-1. **크기 계산** 
+
+3. **크기 계산** 
 
 - 기본값 `box-sizing: content-box`에서는 **`width`가 content만의 크기**다.
 
@@ -464,7 +464,7 @@ main {
 
 `font-size`와 `font-family`는 **반드시 포함**해야 하고, `family`는 맨 뒤에 와야 한다. 생략한 속성은 기본값으로 초기화.
 
-1. **`font-weight` — 글자 두께**
+2. **`font-weight` — 글자 두께**
 
 ```
 p.title   { font-weight: bold; }    /* 굵게 (700과 같음) */
@@ -483,7 +483,7 @@ p.strong  { font-weight: bolder; }  /* 부모보다 한 단계 더 굵게 */
 > 💡 **주의**: 숫자 굵기는 **글꼴 파일에 그 굵기가 있을 때만** 차이가 난다. 예를 들어 `font-weight: 300`을 줘도 글꼴에 Light 버전이 없으면 보통 굵기와 똑같이 보인다. 구글 폰트를 쓸 때는 필요한 굵기(`family=Noto+Sans:wght@300;700`처럼)를 같이 불러와야 한다.
 > 
 
-1. **`text-align` — 텍스트 가로 정렬**
+3. **`text-align` — 텍스트 가로 정렬**
 
 ```
 .left    { text-align: left; }     /* 왼쪽 정렬 (기본값) */
@@ -508,7 +508,7 @@ p.strong  { font-weight: bolder; }  /* 부모보다 한 단계 더 굵게 */
 > 💡 **자주 하는 실수**: `<img>`나 `<button>` 같은 인라인 요소를 `text-align`으로 가운데 두려고 하면 부모 쪽에 줘야 함. 대상(자식)이 아니라 **감싸는 블록 요소**에 줘야 동작한다.
 > 
 
-1. **폰트 변경 방법**
+4. **폰트 변경 방법**
 - **방법 1: 설치된 폰트 사용 (가장 간단)**
     
     ```
