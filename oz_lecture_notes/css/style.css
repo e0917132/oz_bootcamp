@@ -1,0 +1,25 @@
+        #contents{
+            text-align: center;
+        }
+        header {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: x-large; 
+            font-weight: bold;
+            margin: 20px;
+        }
+
+        #github {
+            margin: 20;
+            color: black;
+        }
+        main {
+            font-size: medium;
+            padding: 50px;
+            font-family: "Nanum Gothic", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+        footer {
+            margin-top: 120px;
+            font-size: xx-small;
+        }
