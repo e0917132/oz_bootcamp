@@ -9,79 +9,107 @@
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
 </head>
 <body>
     <div class="all">
+        <button class="print_btn" onclick="window.print()">프린트하기</button>
         <header class="main_header">
-            <h2>Eunji Jeon</h2>
-            <p> FDE (Forward Deployed Engineer) / 전방 배치 엔지니어</p>
-        </header>
             <p id="image"><img width="400" src="IMG_4879.jpg" alt="사진"></p>
-        
+            <h1>Eunji Jeon</h1>
+            <p id="position"> 지원 직무: PM(Project Manager) </p><br>
+            <p>생년월일: 1990년 2월 24일 (만 36세)</p>
+            <p>연락처: 000-0000-0000</p>
+            <p>주소: 경기도 군포시</p><br>
+            <a class="github-link" href="https://github.com/e0917132?tab=repositories"><i class="fa-brands fa-github"></i>내 Repositories 바로가기</a><br><hr>
+        </header>
         <main>
-            <h3>About Me</h3>
-            <a href="https://github.com/e0917132?tab=repositories">내 Repositories 바로가기</a>
-            <ul>
-               <li>이름: 전은지</li>  
-               <li>나이: 36세</li>
-               <li>출생년도: 1990년</li>
-              <li>성별: 여자</li>
-               <li>거주지: 경기도 군포시</li>
-         </ul>
+            <h2>Introduce</h2>
+                <h4>데이터 기반의 논리적 판단으로 테크와 비즈니스를 잇는 PM 지원자 </h4>
+                <p>데이터의 가치를 비즈니스 함의로 연결하고 테크 기반의 논리적 소통을 지향하는 신입 PM 지원자입니다.</p>
+                <p>딥러닝 기반의 의료 영상 AI 분류 모델을 직접 구현한 경험이 있으며, 해커톤을 통해 데이터 리스크를 사전에 검증하고 실제 프로젝트의 전 과정을 리드하며 성과를 도출했습니다. 이에 더해 HTML/CSS와 Git을 활용해 개인 블로그를 구축하는 등 개발 프로세스에 대한 탄탄한 테크니컬 이해도를 갖추었습니다.</p>
+                <p>구조적 문제 해결 능력과 모호한 개념을 명확히 정리하는 소통 역량을 바탕으로, 팀이 언제나 올바른 문제에 집중하도록 돕는 나침반이 되겠습니다.</p>
     <hr>
-    <h2>Hobby & Preference</h2>
-        <ol type="a">
-            <li>취미: 식물 키우기, 유튜브 보기, 등산 </li>
-            <li>좋아하는 음식: 초밥, 샤브샤브, 망고, 체리, 화이트와인</li>
-            <li>좋아하는 영화: 가오갤, 노트북</li>
-            <li>기억에 남는 여행지: 뉴질랜드, 발리</li>
-        </ol><hr>
+    <h2>Skills</h2>
+    <div class="skill_group">
+        <p class="skill_label">LANGUAGE</p>
+        <span class="skill_tag">Python</span>
+    </div>
+    <hr>
     <h2>Career & Work Experience</h2>
-    <table border="2">
-        <thead>
-            <tr>
-            <th>회사명</th>
-            <th>직무</th>
-            <th>기간</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>KAFA Fitness</td>
-                <td>운동강사</td>
-                <td>2012.03~2020.10</td>
-            </tr>
-            <tr>
-                <td>이진호수 휘트니스</td>
-                <td>헬스 트레이너</td>
-                <td>2020.11~2021.10</td>
-            </tr>
-            <tr>
-                <td>SB Fitness</td>
-                <td>FC 실장</td>
-                <td>2022.10~2023.03</td>
-            </tr>
-            <tr>
-                <td>창원시설공단 의창스포츠센터</td>
-                <td>플라잉요가 강사</td>
-                <td>2024.04~2025.12</td>
-            </tr>          
-            <tr>
+    <div class="career_item">
+        <div class="career_head">
+            <p><span class="career_company">창원시설공단 의창스포츠센터</span> &nbsp;| 플라잉요가 강사</p>
+            <span class="career_period">2024.04 - 2025.12</span>
+        </div>
+        <p class="career_task">[주요 업무 : 회원 관리 및 수업 기획]</p>
+        <ul>
+            <li>회원 관리 및 피드백 전달</li>
+            <li>프로그램 구성(수업 기획)</li>
+        </ul>
+    </div>
+
+    <div class="career_item">
+        <div class="career_head">
+            <p><span class="career_company">SB Fitness</span> &nbsp;| FC 실장</p>
+            <span class="career_period">2022.10 - 2023.03</span>
+        </div>
+        <p class="career_task">[주요 업무 : 매출 및 운영 관리]</p>
+        <ul>
+            <li>매출 관리</li>
+            <li>회원 상담</li>
+            <li>수업 스케줄 관리</li>
+            <li>홍보</li>
+        </ul>
+    </div>
+
+    <div class="career_item">
+        <div class="career_head">
+            <p><span class="career_company">Kfit 사단법인 한국휘트니스 지도자 협회</span> &nbsp;| 실장, 교육 강사</p>
+            <span class="career_period">2012.03 - 2025.12</span>
+        </div>
+        <p class="career_task">[주요 업무 : 운영 전반 관리, 수업 기획 및 교육 담당]</p>
+        <ul>
+            <li>수업 계획 및 관리</li>
+            <li>회원 관리 및 피드백 조율</li>
+            <li>매출 관리</li>
+            <li>홍보</li>
+            <li>자격증 교육 강사 경력 다수</li>
+        </ul>
+    </div>
+
+    <div class="career_etc">
+        <p class="career_task">[기타 경력]</p>
+        <p>이진호수 휘트니스 · 헬스 트레이너 (2020.11 - 2021.10)</p>
+    </div>
+
+<hr>
+    <h2>Education</h2>
+        <table>
+            <tbody>
+                <tr>
+                <td>2026.07.09 - 현재</td>
                 <td>OZ 코딩스쿨</td>
-                <td>AI 헬스케어 부트캠프</td>
-                <td>2026.07~현재</td>
-            </tr>      
-        </tbody>
-    </table><hr>
-    <h2> Send Cover Letter</h2>
-    <form>
-        <label for="email">담당자 이메일:</label>
-        <input id="email" type="email" required placeholder="example@email.com">
-        <label for="company">회사명:</label>
-        <input id="company" type="text" required placeholder="(주)Paper Company">
-        <button type="submit">이력서 전송하기</button>
-    </form>
+                <td>AI 헬스캐어 부트캠프</td>
+                <td>수료 예정</td>
+                </tr>
+                <tr>
+                <td>2029.04 - 2012.02</td>
+                <td>소카 대학교(創価大学, 일본 도쿄)</td>
+                <td>인문학과 매스컴 전공</td>
+                <td>중퇴</td>
+                </tr>
+                <tr>
+                <td>2005.03 - 2008.02</td>
+                <td>마산 제일 여자 고등학교(경남 창원)</td>
+                <td>문과</td>
+                <td>졸업</td>
+                </tr>
+            </tbody>
+        </table><br>
+        <hr>
     </main>
     </div>
 </body>
