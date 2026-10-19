@@ -113,8 +113,9 @@ hr {
 
 .career_head {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: baseline;
+    gap: 15pt;                   /* 직장명|역할 뒤에서 15pt 띄움 */
 }
 
 .career_head p {
