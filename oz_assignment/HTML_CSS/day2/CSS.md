@@ -624,7 +624,7 @@ p.strong  { font-weight: bolder; }  /* 부모보다 한 단계 더 굵게 */
 **Font Awesome** — 아이콘을 **글꼴처럼** 쓰는 라이브러리
 
 ```
-<-- <head>의 <style> 안에 작성 -->
+<-- <head> 안에 작성 -->
 <link rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
 
