@@ -1,0 +1,53 @@
+        body {
+            margin: 0;
+        }
+
+        #contents{
+            text-align: center;
+
+            display: flex;
+            flex-direction: column;
+
+            background-color: lightgray;
+            min-height: 100vh;
+
+        }
+        header {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: x-large; 
+            font-weight: bold;
+            margin: 1rem;
+        }
+
+        #contact-row {
+            color: gray;
+            display: flex;
+            font-size: small;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        #github {
+            /* 부모 컬러에 따름 - inherit */
+            color: inherit; 
+        }
+
+        #english {
+            position: absolute;
+            top: 0.8rem;
+            right: 0.8rem;
+            font-size: small;
+            color: darkcyan;
+        }
+        main {
+            flex: 1;
+            margin-top: 1rem;
+            font-size: medium;
+            font-family: "Nanum Gothic", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+        footer {
+            font-size: xx-small;
+            margin-bottom: 0.8rem;
+        }

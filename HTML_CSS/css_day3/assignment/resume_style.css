@@ -1,0 +1,362 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding-left: 150px;          /* 사이드바 너비만큼 비워두기 */
+    background-color: #f7f7f7;    /* 회색 바탕 위에 흰 카드 */
+    font-family: "Nanum Gothic", sans-serif;
+    font-weight: 400;
+    color: rgb(58, 56, 56);
+}
+
+/* ===== 왼쪽 사이드바: fixed ===== */
+.sidebar {
+    position: fixed;              /* 스크롤해도 왼쪽에 고정 */
+    top: 0;
+    left: 0;
+    width: 150px;
+    height: 100vh;                /* 화면 높이 전체 */
+    z-index: 10;
+    background-color: #2b2b2b;
+}
+
+.sidebar__menu {
+    display: flex;
+    flex-direction: column;       /* 메뉴를 세로로 */
+    gap: 4px;
+    list-style: none;
+    margin: 0;
+    padding: 1.5rem 0;
+}
+
+.sidebar__menu a,
+.sidebar__print {
+    display: block;
+    width: 100%;
+    padding: 10px 12px;
+    border: none;
+    background: none;
+    color: #fff;
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-align: left;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.sidebar__menu a:hover,
+.sidebar__print:hover {
+    background-color: #444;
+}
+
+/* 햄버거 버튼: 데스크톱에서는 숨김 */
+.hamburger {
+    display: none;
+}
+
+/* ===== 이력서 카드 ===== */
+.all {
+    max-width: 960px;
+    margin: 1.75rem auto;         /* 가운데 정렬 */
+    padding: 4rem 4rem;
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+/* ===== Header: float → Flex ===== */
+.main_header {
+    display: flex;
+    justify-content: space-between;   /* 글은 왼쪽, 사진은 오른쪽 끝 */
+    align-items: center;              /* 세로 가운데 */
+    gap: 2rem;
+}
+
+.profile_info {
+    display: flex;
+    flex-direction: column;           /* <br> 대신 세로 배치 + gap */
+    gap: 0.4rem;
+}
+
+.profile_info h1 {
+    margin: 0 0 0.5rem;
+    font-size: 2.4rem;
+}
+
+.profile_info p {
+    margin: 0;
+    line-height: 1.5;
+}
+
+#position {
+    color: steelblue;
+    font-weight: 700;
+    margin-bottom: 0.8rem;
+}
+
+#contact-row {
+    color: rgb(76, 76, 76);
+    display: flex;
+    font-size: small;
+    justify-content: center;
+    gap: 1rem;
+        }
+
+#github {
+    /* 부모 컬러에 따름 - inherit */
+    color: inherit; 
+}
+
+/* ===== 사진: relative + absolute 배지 ===== */
+.profile_photo {
+    position: relative;       /* 배지의 기준점 */
+    flex-shrink: 0;           /* 글이 길어도 사진이 찌그러지지 않게 */
+}
+
+.profile_photo img {
+    display: block;
+    width: 200px;
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+}
+
+.photo_badge {
+    position: absolute;       /* 사진 왼쪽 아래 모서리에 붙임 */
+    bottom: 12px;
+    left: 12px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background-color: steelblue;
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+/* ===== 본문 ===== */
+main p {
+    text-align: left;
+    line-height: 1.7;
+    margin: 0 0 8px;
+    word-break: keep-all;
+}
+
+h2 {
+    border-left: 4px solid steelblue;
+    padding-left: 10px;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #bdbebf;
+    margin: 24px 0;
+}
+
+/* ===== Skills: inline-block → Flex wrap ===== */
+.skill_group {
+    margin: 16px 0;
+}
+
+.skill_label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #888;
+    letter-spacing: 0.05em;
+    margin: 0 0 8px;
+}
+
+.skill_tags {
+    display: flex;
+    flex-wrap: wrap;          /* 넘치면 다음 줄로 */
+    gap: 8px;
+}
+
+.skill_tag {
+    padding: 6px 14px;
+    border-radius: 999px;
+    background-color: #eef1f6;
+    color: #4a5a7a;
+    font-size: 0.875rem;
+    font-weight: 700;
+}
+
+/* ===== Career ===== */
+.career_item {
+    margin-bottom: 24px;
+}
+
+.career_head {
+    display: flex;
+    justify-content: space-between;   /* 회사명 ↔ 기간 양 끝 정렬 */
+    align-items: baseline;
+    gap: 15pt;
+}
+
+.career_head p {
+    margin: 0;
+}
+
+.career_company {
+    font-weight: 700;
+}
+
+.career_period {
+    font-size: 0.8rem;
+    color: #888;
+    white-space: nowrap;      /* 기간이 두 줄로 깨지지 않게 */
+}
+
+.career_task {
+    margin: 12px 0 6px;
+    padding-left: 10px;
+    border-left: 2px solid #bdbebf;
+    font-weight: 700;
+}
+
+.career_item ul {
+    margin: 0;
+    padding-left: 24px;
+}
+
+.career_item li {
+    line-height: 1.7;
+}
+
+.career_etc {
+    margin-bottom: 24px;
+}
+
+.career_etc p:last-child {
+    margin: 0 0 0 12px;
+    font-size: 0.875rem;
+}
+
+/* ===== Education ===== */
+table {
+    border-collapse: collapse;
+    width: 70%;
+}
+
+td {
+    border-bottom: 1px solid gray;
+    padding: 8px;
+    text-align: center;
+}
+
+/* ===== 반응형: 태블릿 이하 ===== */
+@media (max-width: 768px) {
+    /* 사이드바 → 햄버거 메뉴 */
+    body {
+        padding-left: 0;
+    }
+
+    .hamburger {
+        display: flex;            /* 모바일에서만 보이게 */
+        justify-content: center;
+        align-items: center;
+        position: fixed;          /* 스크롤해도 왼쪽 위에 고정 */
+        top: 12px;
+        left: 12px;
+        z-index: 20;              /* 사이드바보다 위 */
+        width: 44px;
+        height: 44px;
+        border: none;
+        border-radius: 8px;
+        background-color: #2b2b2b;
+        color: #fff;
+        font-size: 1.2rem;
+        cursor: pointer;
+    }
+
+    .sidebar {
+        width: 200px;
+        transform: translateX(-100%);   /* 평소엔 화면 왼쪽 밖에 숨김 */
+        transition: transform 0.3s ease;
+    }
+
+    .sidebar.open {
+        transform: translateX(0);       /* open 클래스가 붙으면 슬라이드로 등장 */
+        box-shadow: 4px 0 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .sidebar__menu {
+        padding-top: 4.5rem;      /* 햄버거 버튼 아래부터 메뉴 시작 */
+    }
+
+    .sidebar__menu a,
+    .sidebar__print {
+        padding: 14px 20px;       /* 손가락으로 누르기 쉽게 */
+        font-size: 1rem;
+    }
+
+    .all {
+        margin: 0;
+        padding: 2.5rem 1.5rem;
+        border-radius: 0;
+    }
+
+    .main_header {
+        flex-direction: column-reverse;   /* 사진이 위, 글이 아래 */
+        text-align: center;
+    }
+
+    .profile_info {
+        align-items: center;
+    }
+
+    .github-link {
+        align-self: center;
+    }
+
+    .profile_photo img {
+        width: 150px;
+    }
+
+    table {
+        width: 100%;
+    }
+}
+
+/* ===== 반응형: 모바일 ===== */
+@media (max-width: 480px) {
+    .all {
+        padding: 2rem 1rem;
+    }
+
+    .profile_info h1 {
+        font-size: 1.8rem;
+    }
+
+    .career_head {
+        flex-direction: column;           /* 기간을 회사명 아래로 */
+        gap: 2px;
+    }
+
+    td {
+        padding: 6px 4px;
+        font-size: 0.8rem;
+    }
+}
+
+/* ===== 인쇄 ===== */
+@media print {
+    body {
+        padding-left: 0;
+        background: none;
+    }
+    .sidebar,
+    .hamburger {
+        display: none;            /* 인쇄(PDF)에는 메뉴 제외 */
+    }
+    .all {
+        margin: 0;
+        padding: 0;
+    }
+    table {
+        width: 100%;
+    }
+}

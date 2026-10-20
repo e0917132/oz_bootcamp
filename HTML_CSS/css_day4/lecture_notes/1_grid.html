@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            /* item들이 앉을 자리 만들기 */
+            display: grid;
+            grid-template-columns: repeat(4, 25%);
+            grid-template-rows: 300px 300px;
+            /* gap: **px 도 가능 */
+            border: 2px solid black;
+            margin-bottom: 40px;
+        }
+
+        .item {
+            height: 80px;
+            background-color: skyblue;
+            border: 1px solid black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="item">A</div>
+        <div class="item">B</div>
+        <div class="item">C</div>
+        <div class="item">D</div>
+        <div class="item">E</div>
+        <div class="item">F</div>
+    </div>
+</body>
+</html>

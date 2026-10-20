@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eunji's Resume</title>
+    <!-- External CSS -->
+    <link rel="stylesheet" href="resume_style.css">
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+</head>
+<body>
+    <!-- ===== 햄버거 버튼 (모바일에서만 보임) ===== -->
+    <button class="hamburger" aria-label="메뉴 열기" aria-expanded="false" onclick="toggleMenu()">
+        <i class="fa-solid fa-bars"></i>
+    </button>
+
+    <!-- ===== 왼쪽 사이드바 ===== -->
+    <nav class="sidebar" id="sidebar">
+        <ul class="sidebar__menu">
+            <li><a href="test_resume.html">이력서</a></li>
+            <li><a href="#">포트폴리오</a></li>
+            <li><button class="sidebar__print" onclick="window.print()">PDF 내려받기</button></li>
+        </ul>
+    </nav>
+
+    <div class="all">
+
+        <!-- ===== Header: 글(왼쪽) + 사진(오른쪽) ===== -->
+        <header class="main_header">
+            <div class="profile_info">
+                <h1>Eunji Jeon</h1>
+                <p id="position">지원 직무: PM(Project Manager)</p>
+                <div id="contact-row">
+                    <span>000-0000-0000</span>
+                    <span>sokajej@naver.com</span>
+                    <a href="https://github.com/e0917132?tab=repositories" id="github">
+                        <i class="fa-brands fa-github"></i>Eunji's Github
+                    </a>
+                </div>
+            </div>
+            <div class="profile_photo">
+                <img src="IMG_4879_crop.jpg" alt="사진">
+                <span class="photo_badge">Open to Work</span>
+            </div>
+        </header>
+        <hr>
+
+        <main>
+            <!-- ===== Introduce ===== -->
+            <h2>Introduce</h2>
+            <h4>데이터 기반의 논리적 판단으로 테크와 비즈니스를 잇는 PM 지원자</h4>
+            <p>데이터의 가치를 비즈니스 함의로 연결하고 테크 기반의 논리적 소통을 지향하는 신입 PM 지원자입니다.</p>
+            <p>딥러닝 기반의 의료 영상 AI 분류 모델을 직접 구현한 경험이 있으며, 해커톤을 통해 데이터 리스크를 사전에 검증하고 실제 프로젝트의 전 과정을 리드하며 성과를 도출했습니다. 이에 더해 HTML/CSS와 Git을 활용해 개인 블로그를 구축하는 등 개발 프로세스에 대한 탄탄한 테크니컬 이해도를 갖추었습니다.</p>
+            <p>구조적 문제 해결 능력과 모호한 개념을 명확히 정리하는 소통 역량을 바탕으로, 팀이 언제나 올바른 문제에 집중하도록 돕는 나침반이 되겠습니다.</p>
+            <hr>
+
+            <!-- ===== Skills ===== -->
+            <h2>Skills</h2>
+            <div class="skill_group">
+                <p class="skill_label">LANGUAGE</p>
+                <div class="skill_tags">
+                    <span class="skill_tag">Python</span>
+                    <span class="skill_tag">HTML</span>
+                    <span class="skill_tag">CSS</span>
+                    <span class="skill_tag">Git</span>
+                </div>
+            </div>
+            <hr>
+
+            <!-- ===== Career ===== -->
+            <h2>Career &amp; Work Experience</h2>
+
+            <div class="career_item">
+                <div class="career_head">
+                    <p><span class="career_company">창원시설공단 의창스포츠센터</span> &nbsp;| 플라잉요가 강사</p>
+                    <span class="career_period">2024.04 - 2025.12</span>
+                </div>
+                <p class="career_task">[주요 업무 : 회원 관리 및 수업 기획]</p>
+                <ul>
+                    <li>회원 관리 및 피드백 전달</li>
+                    <li>프로그램 구성(수업 기획)</li>
+                </ul>
+            </div>
+
+            <div class="career_item">
+                <div class="career_head">
+                    <p><span class="career_company">SB Fitness</span> &nbsp;| FC 실장</p>
+                    <span class="career_period">2022.10 - 2023.03</span>
+                </div>
+                <p class="career_task">[주요 업무 : 매출 및 운영 관리]</p>
+                <ul>
+                    <li>매출 관리</li>
+                    <li>회원 상담</li>
+                    <li>수업 스케줄 관리</li>
+                    <li>홍보</li>
+                </ul>
+            </div>
+
+            <div class="career_item">
+                <div class="career_head">
+                    <p><span class="career_company">Kfit 사단법인 한국휘트니스 지도자 협회</span> &nbsp;| 실장, 교육 강사</p>
+                    <span class="career_period">2012.03 - 2025.12</span>
+                </div>
+                <p class="career_task">[주요 업무 : 운영 전반 관리, 수업 기획 및 교육 담당]</p>
+                <ul>
+                    <li>수업 계획 및 관리</li>
+                    <li>회원 관리 및 피드백 조율</li>
+                    <li>매출 관리</li>
+                    <li>홍보</li>
+                    <li>자격증 교육 강사 경력 다수</li>
+                </ul>
+            </div>
+
+            <div class="career_etc">
+                <p class="career_task">[기타 경력]</p>
+                <p>이진호수 휘트니스 · 헬스 트레이너 (2020.11 - 2021.10)</p>
+            </div>
+            <hr>
+
+            <!-- ===== Education ===== -->
+            <h2>Education</h2>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>2026.07.09 - 현재</td>
+                        <td>OZ 코딩스쿨</td>
+                        <td>AI 헬스케어 부트캠프</td>
+                        <td>수료 예정</td>
+                    </tr>
+                    <tr>
+                        <td>2009.04 - 2012.02</td>  <!-- 원래 2029.04 → 확인 필요 -->
+                        <td>소카 대학교(創価大学, 일본 도쿄)</td>
+                        <td>인문학과 매스컴 전공</td>
+                        <td>중퇴</td>
+                    </tr>
+                    <tr>
+                        <td>2005.03 - 2008.02</td>
+                        <td>마산 제일 여자 고등학교(경남 창원)</td>
+                        <td>문과</td>
+                        <td>졸업</td>
+                    </tr>
+                </tbody>
+            </table>
+            <hr>
+        </main>
+    </div>
+
+    <script>
+        // 햄버거 버튼: 사이드바에 open 클래스를 붙였다 뗐다 함
+        function toggleMenu() {
+            const sidebar = document.getElementById('sidebar');
+            const button = document.querySelector('.hamburger');
+            const isOpen = sidebar.classList.toggle('open');
+
+            button.setAttribute('aria-expanded', isOpen);
+            button.querySelector('i').className = isOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
+        }
+    </script>
+</body>
+</html>

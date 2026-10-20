@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        .container {
+            height: 500px;
+            background-color: gray;
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+
+            /* 축(주축) 방향 정렬 */
+            justify-content: end;
+
+            /* 교차축 방향 정렬 */
+            align-items: center;
+        }
+        
+        .item {
+            background-color: skyblue;
+            border: 1px solid black;
+            
+            width: 80px;
+            height: 80px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="item">A</div>
+        <div class="item">B</div>
+        <div class="item">C</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            background-color: orange;
+            border: 1px solid black;
+            
+            /* 상대 포지션 */
+            /* position: relative;
+            top: 100px;
+            left: 20px; */
+
+            /* 절대 포지션 */
+            position: absolute;
+            top: 20px;
+            left: 20px;
+
+            /* margin : 여백을 준 만큼 밀려나는 것.(박스 사이즈에 영향이 생김) */
+            /* margin-top: 20px;
+             margin-left: 20px; */
+        }
+
+        .box2 {
+            background-color: skyblue;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">BOX</div>
+    <div class="box2">BOX 2</div>
+</body>
+</html>
