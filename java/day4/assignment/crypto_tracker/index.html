@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js" defer></script>
+</head>
+<body>
+    <div class="container">
+
+        <!-- ===== 헤더: 제목 + 업데이트 상태 ===== -->
+        <header class="header">
+            <h1>🪙 Crypto Tracker</h1>
+            <div id="status" class="status">
+                <span class="dot"></span>
+                <span id="status-text">불러오는 중...</span>
+            </div>
+        </header>
+
+        <!-- ===== 탭 + 검색 ===== -->
+        <div class="toolbar">
+            <div class="tabs">
+                <button class="tab active" type="button" data-tab="all">
+                    전체 <span id="count-all" class="count">0</span>
+                </button>
+                <button class="tab" type="button" data-tab="favorites">
+                    ★ 관심 <span id="count-fav" class="count">0</span>
+                </button>
+            </div>
+            <input id="search" type="search" placeholder="🔍 코인 검색 (예: BTC)" autocomplete="off">
+        </div>
+
+        <!-- ===== 코인 목록 ===== -->
+        <div class="table">
+            <div class="table-head">
+                <span></span>
+                <button class="sort-btn" type="button" data-sort="base" data-label="이름">이름</button>
+                <button class="sort-btn num" type="button" data-sort="price" data-label="현재가 (USDT)">현재가 (USDT)</button>
+                <button class="sort-btn num" type="button" data-sort="changePercent" data-label="24h 변동">24h 변동</button>
+                <button class="sort-btn num col-high" type="button" data-sort="high" data-label="24h 최고가">24h 최고가</button>
+                <button class="sort-btn num col-low" type="button" data-sort="low" data-label="24h 최저가">24h 최저가</button>
+                <button class="sort-btn num col-volume" type="button" data-sort="quoteVolume" data-label="거래대금">거래대금</button>
+            </div>
+            <ul id="coin-list" class="coin-list"></ul>
+            <p id="empty" class="empty">불러오는 중...</p>
+            <button id="more" class="more" type="button" hidden>더보기</button>
+        </div>
+
+        <p class="footnote">
+            데이터: Binance 24hr Ticker API · 1초마다 갱신 · USDT 마켓만 표시 (거래대금 0인 항목 제외)<br>
+            코인을 클릭하면 상세 정보와 목표가 알림을 설정할 수 있습니다.
+        </p>
+    </div>
+
+    <!-- ===== 상세 모달 ===== -->
+    <div id="modal" class="modal" hidden>
+        <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+            <div class="modal-header">
+                <h2 id="modal-title"></h2>
+                <button id="modal-fav" class="star" type="button" aria-label="관심 항목"></button>
+                <button id="modal-close" class="modal-close" type="button" aria-label="닫기">✕</button>
+            </div>
+
+            <p id="modal-price" class="modal-price"></p>
+            <p id="modal-change" class="modal-change"></p>
+
+            <dl class="modal-stats">
+                <div><dt>24h 고가</dt><dd id="modal-high"></dd></div>
+                <div><dt>24h 저가</dt><dd id="modal-low"></dd></div>
+                <div><dt>시가 (24h 전)</dt><dd id="modal-open"></dd></div>
+                <div><dt>거래 횟수</dt><dd id="modal-count"></dd></div>
+                <div><dt>거래량</dt><dd id="modal-volume"></dd></div>
+                <div><dt>거래대금 (USDT)</dt><dd id="modal-quote-volume"></dd></div>
+            </dl>
+
+            <div class="alert-box">
+                <h3>🔔 목표가 알림</h3>
+                <p id="alert-info" class="alert-info"></p>
+                <form id="alert-form" class="alert-form">
+                    <input id="alert-input" type="number" step="any" min="0" placeholder="목표 가격 (USDT)">
+                    <button type="submit">설정</button>
+                </form>
+                <button id="alert-clear" class="alert-clear" type="button" hidden>알림 해제</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
