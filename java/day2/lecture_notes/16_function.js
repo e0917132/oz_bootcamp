@@ -35,3 +35,14 @@ function runFunction(f, arg1, arg2) {
 
 let result = runFunction(add, 4, 2)
 console.log(result);
+
+
+// return 설정하지 않았을 경우 = undefined
+
+function sayHello() {
+    console.log("Hello");
+    // return not defined
+}
+
+let hello = sayHello()   // hello
+console.log(hello);    // undefined

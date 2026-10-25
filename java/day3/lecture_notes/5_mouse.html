@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        span {
+            background-color: orange;
+            border: 1px solid black;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <span>마우스를 올려보세요.</span>
+
+    <script>
+        const span = document.querySelector("span")
+
+        function changeColor(color) {
+            span.style.backgroundColor = color;
+        }
+            
+        span.addEventListener(
+            "mouseover", () => changeColor("skyblue")
+        )
+        span.addEventListener(
+            "mouseout", () => changeColor("orange")
+        )
+
+        span.addEventListener(
+            "click", () => changeColor("red")
+        )
+
+    </script>
+</body>
+</html>

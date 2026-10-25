@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>눌러보세요</button>
+
+    <script>
+        const btn = document.querySelector("button")
+
+
+        // 이벤트 리스너 (Event Listener)
+        // -> 특정 이벤트가 발생했을 때 실행할 함수
+        
+        // btn.addEventListener(
+        //     "click",
+        //     () => alert("버튼이 클릭됨")     // function clickAlert () {}와 동일한 결과가 나오는 축약형 형태.
+        // )
+
+        btn.addEventListener(
+            "click", () => {
+                setTimeout(
+                    () => {
+                        const p = document.createElement("p");
+                        p.textContent = "3초가 지났습니다";
+                        document.body.appenChild(p);
+                    }, 
+                    3000
+                )
+            }
+        )
+
+
+
+    </script>
+</body>
+</html>
