@@ -1,30 +1,30 @@
-from fastapi import FastAPI, Path, Query, HTTPException, Body
-from pydantic import BaseModel
+from fastapi import FastAPI, Path, Query, Body, HTTPException, Depends
+from pydantic import BaseModel, Field
 from sqlalchemy import select
 
-from connection import SessionFactory
+from connection import SessionFactory, get_session
+from connection_async import get_async_session
 from model import Item
 
+import anyio.to_thread
+from contextlib import asynccontextmanager
+
+
+@asynccontextmanager
+async def lifespan(_):
+    # 서버 시작 직후에 실행할 코드
+    # 예: AI 모델 로드
+    limiter = anyio.to_thread.current_default_thread_limiter()
+    limiter.total_tokens == 200       # 쓰레드 풀 개수를 200개로 상향
+
+    yield
+    #서버 종료 직전에 실행할 코드
+
 app = FastAPI(
-    title="AI 헬스케어 7기",
-    contact={
-        "name": "전은지",
-        "email": "e0917132@gmail.com"
-    }
+    title="e-Commerce 상품 관리 서버",
+    lifespan = lifespan
 )
 
-# 데코레이터(Decorator): 함수를 꾸며주는 기능
-
-# Method(행위) + URL(대상)
-# DELETE example.com/users
-# -> fastapi 형식으로 아래처럼 적은것.
-
-# @app.get("/hello")
-# def root_handler():
-#     return {"ping":"pong"}
-
-
-ITEMS: list[dict[str, int | str]] = []
 
 class ItemResponse(BaseModel):
     id: int
@@ -34,76 +34,73 @@ class ItemResponse(BaseModel):
 @app.get(
     "/items",
     summary="전체 상품 조회 API",
-    response_model= list[ItemResponse]
+    response_model=list[ItemResponse]
 )
-def get_items_handler():
-    session = SessionFactory()
-
+async def get_items_handler(
+    session = Depends(get_async_session)
+):
+    
     stmt = select(Item)
-    result = session.execute(stmt)
+    result = await session.execute(stmt)
     items: list[Item] = result.scalars().all()
     return items
 
 @app.get(
     "/items/search",
     summary="상품 검색 API",
-    response_model= list[ItemResponse]
+    response_model=list[ItemResponse]
 )
-def search_items_handler(
-    q: str = Query(..., min_length=2)
+async def search_items_handler(
+    q: str = Query(..., min_length=2),
+    session = Depends(get_async_session)
 ):
-    session = SessionFactory()
-
     stmt = select(Item).where(Item.name.contains(q))
-    result = session.execute(stmt)
+    result = await session.execute(stmt)
     items = result.scalars().all()
     if not items:
         raise HTTPException(
             status_code=404,
             detail="검색 결과가 없습니다."
         )
-    return items 
+    return items
 
 @app.get(
     "/items/{item_id}",
     summary="단일 상품 조회 API (상세보기)",
-    response_model= ItemResponse,
-    status_code=200
+    response_model=ItemResponse,
 )
-def get_item_detail_handler(
-    item_id: int = Path(..., ge=1, le=3)
+async def get_item_detail_handler(
+    item_id: int = Path(..., ge=1),
+    session = Depends(get_async_session)
 ):  
-    session = SessionFactory()
-    
     stmt = select(Item).where(Item.id == item_id)
-    result = session.execute(stmt)
+    result = await session.execute(stmt)
     item = result.scalar()
     if not item:
         raise HTTPException(
             status_code=404, detail="상품을 찾을 수 없습니다."
         )
     return item
-    
+
 class CreateItemRequest(BaseModel):
-    name: str
-    price: int
+    name: str = Field(..., examples=["melon"])
+    price: int = Field(..., examples=[100])
 
 @app.post(
     "/items",
     summary="새로운 상품 등록 API",
-    response_model= ItemResponse,
+    response_model=ItemResponse,
     status_code=201
 )
-def create_new_item_handler(
-    # body = CreateItemRequest(name=..., price=...)
-    body: CreateItemRequest
-):
-    session = SessionFactory()
-
+async def create_new_item_handler(
+    body: CreateItemRequest,
+    session = Depends(get_async_session)
+):   
     new_item = Item(name=body.name, price=body.price)
     session.add(new_item)
-    session.commit()  # DB 저장
+    await session.commit()  # DB 저장
     return new_item
+
 
 class UpdateItemRequest(BaseModel):
     name: str | None = None
@@ -111,17 +108,17 @@ class UpdateItemRequest(BaseModel):
 
 @app.patch(
     "/items/{item_id}",
-    summary="상품 수정 API"
+    summary="상품 수정 API",
+    response_model=ItemResponse,
 )
-def update_item_handler(
+async def update_item_handler(
     item_id: int = Path(..., ge=1),
     body: UpdateItemRequest = Body(...),
+    session = Depends(get_async_session)
 ):
-    session = SessionFactory()
-
     # 조회
     stmt = select(Item).where(Item.id == item_id)
-    result = session.execute(stmt)
+    result = await session.execute(stmt)
     item = result.scalar()
     if not item:
         raise HTTPException(
@@ -129,7 +126,7 @@ def update_item_handler(
             detail="상품을 찾을 수 없습니다."
         )
 
-    # 수정
+        # 수정
     if body.name:
         item.name = body.name
     if body.price:
@@ -138,28 +135,24 @@ def update_item_handler(
     session.commit()
     return item
 
-
 @app.delete(
-    "/item/{item_id}",
-    summary= "상품 삭제 API",
-    response_model= None,
-    status_code= 204
+    "/items/{item_id}",
+    summary="상품 삭제 API",
+    response_model=None,
+    status_code=204
 )
-def delete_item_handler(
+async def delete_item_handler(
     item_id: int = Path(..., ge=1),
+    session = Depends(get_async_session)
 ):
-    # 조회
-    session = SessionFactory()
     stmt = select(Item).where(Item.id == item_id)
-    result = session.execute(stmt)
+    result = await session.execute(stmt)
     item = result.scalar()
     if not item:
         raise HTTPException(
             status_code=404,
-            detail= "상품을 찾을 수 없습니다."
+            detail="상품을 찾을 수 없습니다."
         )
 
-    # 삭제
-    session.delete(item)
-    session.commit()
-        
+    await session.delete(item)
+    await session.commit()

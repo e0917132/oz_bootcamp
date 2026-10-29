@@ -2,7 +2,8 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-DATABASE_URL = "sqlite:///fastapi.db"
+DATABASE_URL = "sqlite:///fastapi.db"    # / 세개 -> 파일로 만들어서 저장
+
 
 # 엔진
 engine = create_engine(DATABASE_URL, echo=True)
