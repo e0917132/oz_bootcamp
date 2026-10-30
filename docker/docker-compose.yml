@@ -1,0 +1,14 @@
+# Docker Compoese: 여러개의 컨테이너를 관리하는 기술
+
+services:
+  api:
+    build: .
+    pull_policy: never
+    ports:
+      - "9000:8003"
+
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOTPASSWORD: password
+      MYSQL_DATABASE: fastapi
